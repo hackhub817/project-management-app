@@ -5,7 +5,6 @@ const User = require("../models/userModel");
 exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
   console.log("body", req.body);
-
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser)
@@ -17,7 +16,6 @@ exports.registerUser = async (req, res) => {
       password: hashedPassword,
       email,
     });
-    console.log("ser", newUser);
     await newUser.save();
 
     res.status(201).json({ message: "User registered successfully", newUser });

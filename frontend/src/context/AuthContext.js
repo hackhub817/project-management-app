@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
             withCredentials: true,
           }
         );
-        console.log("res", response);
+
         setIsAuthenticated(response.data.isAuthenticated);
         if (response.data.isAuthenticated) {
           const decoded = jwtDecode(response.data.token);

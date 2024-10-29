@@ -29,11 +29,12 @@ const Navbar = () => {
         </h1>
         <div className="hidden md:flex space-x-6">
           <Link
-            to="/leaderboard"
+            to="/userDashboard"
             className="text-yellow-300 hover:text-yellow-400 transition duration-200"
           >
-            Leaderboard
+            Projects
           </Link>
+
           <button
             onClick={handleLogout}
             className="text-red-400 hover:text-red-500 transition duration-200 font-semibold"
@@ -56,10 +57,10 @@ const Navbar = () => {
 
       <div className="md:hidden mt-4">
         <Link
-          to="/leaderboard"
+          to="/userDashboard"
           className="block py-2 text-yellow-300 hover:bg-gray-700 rounded-lg px-4"
         >
-          Leaderboard
+          Projects
         </Link>
         <button
           onClick={handleLogout}
