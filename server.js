@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://project-management-app-front.vercel.app",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );

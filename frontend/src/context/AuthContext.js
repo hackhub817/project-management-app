@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       try {
         const response = await axios.get(
-          "https://project-management-app-api.vercel.app/api/auth/check-auth",
+          "http://localhost:5000/api/auth/check-auth",
           {
             withCredentials: true,
           }

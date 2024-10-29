@@ -14,12 +14,9 @@ const AssignTask = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data } = await axios.get(
-        `https://project-management-app-api.vercel.app/api/auth/users`,
-        {
-          withCredentials: true,
-        }
-      );
+      const { data } = await axios.get(`http://localhost:5000/api/auth/users`, {
+        withCredentials: true,
+      });
       setUsers(data);
     };
     fetchUsers();
@@ -32,7 +29,7 @@ const AssignTask = () => {
 
         if (user) {
           await axios.patch(
-            `https://project-management-app-api.vercel.app/api/task/${id}/assign`,
+            `http://localhost:5000/api/task/${id}/assign`,
             {
               assignedUser: user.username,
             },
