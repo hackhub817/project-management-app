@@ -14,7 +14,7 @@ const UpdateProjectForm = () => {
     const fetchProject = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/project/${id}`,
+          `https://project-management-app-api.vercel.app/api/project/${id}`,
           {
             withCredentials: true,
           }
@@ -34,7 +34,7 @@ const UpdateProjectForm = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/project/${id}`,
+        `https://project-management-app-api.vercel.app/api/project/${id}`,
         { title, description },
         { withCredentials: true }
       );

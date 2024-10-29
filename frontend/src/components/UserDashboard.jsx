@@ -12,7 +12,7 @@ const UserDashboard = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/project/getAllprojects",
+          "https://project-management-app-api.vercel.app/api/project/getAllprojects",
           {
             withCredentials: true,
           }
@@ -28,7 +28,7 @@ const UserDashboard = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/project/delete/${id}`,
+        `https://project-management-app-api.vercel.app/api/project/delete/${id}`,
         { withCredentials: true }
       );
       toast.success(response.data.message || "Project deleted successfully!");
