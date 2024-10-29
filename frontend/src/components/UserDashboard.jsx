@@ -23,7 +23,7 @@ const UserDashboard = () => {
       }
     };
     fetchProjects();
-  }, []);
+  }, [projects]);
 
   const handleDelete = async (id) => {
     try {
@@ -35,7 +35,6 @@ const UserDashboard = () => {
 
       console.log(response.data.message);
     } catch (error) {
-      console.log("Error:", error);
       toast.error(error.response?.data.message || "Error deleting project.");
     }
   };

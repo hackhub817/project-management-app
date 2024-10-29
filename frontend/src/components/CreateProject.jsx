@@ -25,7 +25,6 @@ const CreateProject = () => {
           withCredentials: true,
         }
       );
-      console.log("test", response.data);
       setTitle("");
       setDescription("");
       navigate("/userDashboard");

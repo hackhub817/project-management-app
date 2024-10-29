@@ -17,7 +17,6 @@ exports.createTask = async (req, res) => {
       !mongoose.Types.ObjectId.isValid(projectId) ||
       !mongoose.Types.ObjectId.isValid(req.user.id)
     ) {
-      console.log("erro");
       return res.status(400).json({ message: "Invalid Project ID or User ID" });
     }
 
@@ -29,12 +28,11 @@ exports.createTask = async (req, res) => {
       dueDate,
       status,
     });
-    console.log("n", newTask);
+
     await newTask.save();
 
     res.status(201).json(newTask);
   } catch (error) {
-    console.log("err", error);
     res.status(500).json({ message: "Error creating task", error });
   }
 };
@@ -85,16 +83,23 @@ exports.updateTask = async (req, res) => {
 
 exports.getFilteredTasks = async (req, res) => {
   try {
-    const { status, dueDate } = req.query;
-    const filter = { createdBy: req.user.id };
+    const { status, projectId } = req.query;
+    const userId = req.user?.id;
+    const filter = { projectId: projectId };
+
+    if (!userId) {
+      return res
+        .status(400)
+        .json({ message: "User ID is required for this request" });
+    }
 
     if (status) filter.status = status;
 
-    if (dueDate) filter.dueDate = { $lte: new Date(dueDate) };
-
     const tasks = await Task.find(filter);
+
     res.status(200).json(tasks);
   } catch (error) {
+    console.error("Error retrieving filtered tasks:", error);
     res.status(500).json({ message: "Error retrieving filtered tasks", error });
   }
 };

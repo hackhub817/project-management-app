@@ -26,12 +26,10 @@ const LoginForm = () => {
           },
         }
       );
-      console.log("blco", response.data.user);
-      console.log("cok", document.cookie);
 
       setError("");
       login(response.data.token);
-      console.log("reached");
+
       navigate("/userDashboard");
     } catch (err) {
       if (err.response && err.response.data) {
